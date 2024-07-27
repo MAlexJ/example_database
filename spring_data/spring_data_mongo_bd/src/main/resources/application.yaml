@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: spring_data_mongo_bd
