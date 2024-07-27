@@ -1,3 +1,22 @@
+logging:
+  level:
+    root: ${APP_SERVICE_ROOT_LOG_LEVEL:INFO}
+    org.springframework: ${APP_SERVICE_SPRING_LOG_LEVEL:INFO}
+
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: spring_data_mongo_bd
+  jpa:
+    # enable logging of SQL statements.
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    mongodb:
+      uri: ${APP_SERVICE_MONGODB_URI:uri}
+      database: ${APP_SERVICE_MONGODB_DATABASE:app-test-db}
+      auto-index-creation: true

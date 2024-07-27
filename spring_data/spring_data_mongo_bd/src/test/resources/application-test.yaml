@@ -1,0 +1,11 @@
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 4.4.18
+        storage:
+          repl-set-name: rs0
+spring:
+  data:
+    mongodb:
+      database: test
