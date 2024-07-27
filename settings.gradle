@@ -6,4 +6,6 @@ pluginManagement {
 }
 rootProject.name = 'example_database'
 include 'acid',
-        'base'
+        'base',
+        'spring_data',
+        'spring_data:spring_data_mongo_bd'
