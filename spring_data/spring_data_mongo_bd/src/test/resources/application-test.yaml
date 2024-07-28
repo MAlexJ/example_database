@@ -2,10 +2,20 @@ de:
   flapdoodle:
     mongodb:
       embedded:
-        version: 4.4.18
+        version: 5.0.5
         storage:
           repl-set-name: rs0
 spring:
   data:
     mongodb:
       database: test
+
+logging:
+  level:
+    org:
+      mongodb: off
+      springframework:
+        boot:
+          autoconfigure:
+            mongo:
+              embedded: off
