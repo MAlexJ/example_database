@@ -24,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ActiveProfiles("test")
 @DataMongoTest()
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = SpringDataMongoBdApplication.class)
+//@ContextConfiguration(classes = SpringDataMongoBdApplication.class)
 class UserRepositoryTest {
 
   @Autowired private UserRepository userRepository;
