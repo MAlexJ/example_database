@@ -15,6 +15,27 @@ and the referenced entity is called the child entity.
 
 link: https://www.baeldung.com/spring-jpa-unidirectional-one-to-many-and-cascading-delete
 
+### ENV file
+
+create `.env` file:
+
+spring-boot variable:
+
+```
+APP_SERVICE_MYSQL_URL=xxx
+APP_SERVICE_MYSQL_PORT=3306
+APP_SERVICE_MYSQL_USERNAME=...........
+APP_SERVICE_MYSQL_DATABASE=example_database_db
+APP_SERVICE_MYSQL_PASSWORD=...........
+```
+
+Docker compose variable:
+
+```
+MYSQL_DATABASE=example_database_db
+MYSQL_ROOT_PASSWORD=...........
+```
+
 ### Docker
 
 #### Docker-compose: MySQL
