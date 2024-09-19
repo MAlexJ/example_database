@@ -9,4 +9,6 @@ include 'acid',
         'base',
         'spring_data',
         'spring_redis',
-        'spring_data:spring_data_mongo_bd'
+        'spring_data:spring_data_mongo_bd',
+        'spring_data_jpa',
+        'spring_data_jpa:one_to_many_unidirectional'

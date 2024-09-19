@@ -1,14 +1,15 @@
 # SQL example
 
-### Guides
+### Database
 
-The following guides illustrate how to use some features concretely:
+#### Types of databases. DBMS type overview
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+DB-Engines is an initiative to collect and present information on database management systems (DBMS). 
+In addition to established relational DBMS, systems and concepts of the growing NoSQL area are emphasized.
+
+link: https://habr.com/ru/companies/amvera/articles/754702/
+link: https://db-engines.com/en/ranking/document+store
+link: https://dbdb.io
 
 ### Docker
 
