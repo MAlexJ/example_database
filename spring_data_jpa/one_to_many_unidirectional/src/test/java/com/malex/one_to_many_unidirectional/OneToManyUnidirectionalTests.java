@@ -10,7 +10,6 @@ import com.malex.one_to_many_unidirectional.repository.oneToMany.CommentReposito
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
-import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,8 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @SpringBootTest
 class OneToManyUnidirectionalTests {
-
-  Logger logger = Logger.getLogger(OneToManyUnidirectionalTests.class.getName());
 
   @Autowired private ArticleRepository articleRepository;
 
