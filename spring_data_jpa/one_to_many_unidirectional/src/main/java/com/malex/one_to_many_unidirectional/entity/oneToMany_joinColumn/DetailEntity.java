@@ -21,6 +21,6 @@ public class DetailEntity {
   @Column(name = "information", nullable = false)
   private String information;
 
-  @Column(name = "item_id", nullable = false)
+  @Column(name = "item_id")
   private Long itemId;
 }

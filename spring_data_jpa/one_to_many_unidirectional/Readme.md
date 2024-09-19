@@ -15,6 +15,61 @@ and the referenced entity is called the child entity.
 
 link: https://www.baeldung.com/spring-jpa-unidirectional-one-to-many-and-cascading-delete
 
+### Hibernate
+
+#### Unidirectional with join table
+
+Unidirectional
+
+A unidirectional one to many using a foreign key column in the owned entity is not that common and not really
+recommended.
+We strongly advise you to use a join table for this kind of association (as explained in the next section).
+This kind of association is described through a @JoinColumn
+
+```
+@Entity
+public class Customer implements Serializable {
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="CUST_ID")
+    public Set<Ticket> getTickets() {
+    ...
+}
+
+@Entity
+public class Ticket implements Serializable {
+    ... //no bidir
+} 
+```
+
+Unidirectional with join table
+
+A unidirectional one to many with join table is much preferred.
+This association is described through an @JoinTable.
+
+```
+@Entity
+public class Trainer {
+    @OneToMany
+    @JoinTable(
+            name="TrainedMonkeys",
+            joinColumns = @JoinColumn( name="trainer_id"),
+            inverseJoinColumns = @JoinColumn( name="monkey_id")
+    )
+    public Set<Monkey> getTrainedMonkeys() {
+    ...
+}
+
+@Entity
+public class Monkey {
+    ... //no bidir
+}
+```
+
+Trainer describes a unidirectional relationship with Monkey using the join table TrainedMonkeys,
+with a foreign key trainer_id to Trainer (joinColumns) and a foreign key monkey_id to Monkey (inversejoinColumns).
+
+link: https://docs.jboss.org/hibernate/stable/annotations/reference/en/html/entity.html#entity-mapping-association-collections
+
 ### ENV file
 
 create `.env` file:

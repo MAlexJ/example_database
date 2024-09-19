@@ -9,7 +9,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
+import lombok.Data;
 
+@Data
 @Entity(name = "items")
 public class ItemEntity {
 
@@ -23,8 +25,20 @@ public class ItemEntity {
   /*
    * This indicates to JPA a unidirectional One-to-Many relationship between the Article and the Comment.
    * JPA will automatically generate the necessary database schema to support this relationship.
+   *
+   * FetchType by default:
+   *
+   * OneToMany: LAZY
+   * ManyToOne: EAGER
+   * ManyToMany: LAZY
+   * OneToOne: EAGER
+   * (see JPA 2.1 Spec)
    */
   @OneToMany(targetEntity = DetailEntity.class)
   @JoinColumn(name = "item_id")
+  /*
+   * Unidirectional with join table:
+   * link: https://docs.jboss.org/hibernate/stable/annotations/reference/en/html/entity.html#entity-mapping-association-collections
+   */
   private Set<DetailEntity> entities = new HashSet<>();
 }

@@ -24,7 +24,7 @@ class OneToManyUnidirectionalTests {
   @Autowired private CommentRepository commentRepository;
 
   @Test
-  void oneToManyUnidirectional() {
+  void createCommentThenArticle() {
 
     // given
     var firstComment = new CommentEntity();
