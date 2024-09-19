@@ -12,7 +12,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     generate-ddl: false
     properties:
       hibernate:
@@ -22,21 +22,21 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:example_database_db}?createDatabaseIfNotExist=true
-    username: ${APP_SERVICE_MYSQL_USERNAME}
-    password: ${APP_SERVICE_MYSQL_PASSWORD}
+    url: jdbc:mysql://localhost:3306/example_database_db
+    username: root
+    password: mysql_password
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 5
       minimum-idle: 2
       max-lifetime: 1800000
 
-  flyway:
-    locations: classpath:db/migration
-    url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:example_database_db}?createDatabaseIfNotExist=true
-    user: ${APP_SERVICE_MYSQL_USERNAME}
-    password: ${APP_SERVICE_MYSQL_PASSWORD}
-    validate-on-migrate: true
+#  flyway:
+#    locations: classpath:db/migration
+#    url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:example_database_db}
+#    user: ${APP_SERVICE_MYSQL_USERNAME}
+#    password: ${APP_SERVICE_MYSQL_PASSWORD}
+#    validate-on-migrate: true
 
 server:
   port: ${PORT:8080}
