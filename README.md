@@ -4,7 +4,7 @@
 
 #### Types of databases. DBMS type overview
 
-DB-Engines is an initiative to collect and present information on database management systems (DBMS). 
+DB-Engines is an initiative to collect and present information on database management systems (DBMS).
 In addition to established relational DBMS, systems and concepts of the growing NoSQL area are emphasized.
 
 link: https://habr.com/ru/companies/amvera/articles/754702/
@@ -33,22 +33,24 @@ Connect to MYSQL and create database:
 create database if not exists sample_db;
 ```
 
-### Liquibase
+### Github action
 
-documentation: https://docs.liquibase.com/change-types/home.html
+issue:  ./gradlew: Permission denied
+link: https://stackoverflow.com/questions/17668265/gradlew-permission-denied
 
-application yaml file configuration:
+You need to update the execution permission for gradlew
+
+1. add action workflow
+
+2. locally pull changes
+
+3. run Git command:
 
 ```
-spring:
-  application:
-    name: sql-web-service
-
-  liquibase:
-    user: ${APP_MYSQL_USER:root}
-    url: jdbc:mysql://${APP_MYSQL_HOSTNAME:localhost}:3306/sample_db
-    password: ${APP_MYSQL_PASSWORD:12345}
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+git update-index --chmod=+x gradlew
+git add .
+git commit -m "Changing permission of gradlew"
+git push
 ```
 
 ### Gradle
