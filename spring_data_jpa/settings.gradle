@@ -1,2 +1,3 @@
 rootProject.name = 'spring_data_jpa'
-include 'one_to_many_unidirectional'
+include 'one_to_many_unidirectional',
+        'one_to_one_unidirectional'

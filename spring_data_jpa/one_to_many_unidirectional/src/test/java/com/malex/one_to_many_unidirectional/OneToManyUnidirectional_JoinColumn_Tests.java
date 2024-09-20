@@ -10,6 +10,8 @@ import com.malex.one_to_many_unidirectional.repository.oneToMany_joinColumn.Item
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,7 +39,7 @@ public class OneToManyUnidirectional_JoinColumn_Tests {
 
     var item = new ItemEntity();
     item.setDescription("Item One, time: " + localDateTime);
-    item.setEntities(new HashSet<>(detailEntities));
+    item.setDetails(new HashSet<>(detailEntities));
 
     ItemEntity itemEntity = itemRepository.save(item);
     assertNotNull(itemEntity);
@@ -45,6 +47,30 @@ public class OneToManyUnidirectional_JoinColumn_Tests {
 
     ItemEntity firstItem = itemRepository.findAll().stream().findFirst().orElseThrow();
     assertNotNull(firstItem);
-    assertEquals(firstItem.getEntities().size(), 2);
+    assertEquals(firstItem.getDetails().size(), 2);
+  }
+
+  @Test
+  void createItemThenDetail() {
+
+    // create and save item
+    var item = new ItemEntity();
+    item.setDescription("Item One");
+    Long itemId = itemRepository.save(item).getId();
+
+    // create and save details
+    var firstDetail = new DetailEntity();
+    firstDetail.setInformation("First Detail");
+    firstDetail.setItemId(itemId);
+
+    var secondDetail = new DetailEntity();
+    secondDetail.setInformation("Second Detail");
+    secondDetail.setItemId(itemId);
+    detailRepository.saveAll(List.of(firstDetail, secondDetail));
+
+
+    ItemEntity itemWithDetailsByItemId = itemRepository.findItemWithDetailsByItemId(itemId);
+
+    System.out.println(itemWithDetailsByItemId.getDetails().size());
   }
 }
