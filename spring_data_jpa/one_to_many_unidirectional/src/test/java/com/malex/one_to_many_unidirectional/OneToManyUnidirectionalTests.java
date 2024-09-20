@@ -26,32 +26,80 @@ class OneToManyUnidirectionalTests {
   @Test
   void createCommentThenArticle() {
 
-    // given
-    var firstComment = new CommentEntity();
-    firstComment.setDescription("First comment");
-    firstComment.setDate(LocalDateTime.now().minusDays(1));
+    // create first comment
+    var firstComment = buildComment("First comment");
 
-    // given
-    var secondComment = new CommentEntity();
-    secondComment.setDescription("First comment");
-    secondComment.setDate(LocalDateTime.now().minusDays(1));
+    // create second comment
+    var secondComment = buildComment("Second comment");
 
-    // and
-    var commentEntities = commentRepository.saveAll(List.of(firstComment, secondComment));
+    // save comments
+    var comments = commentRepository.saveAll(List.of(firstComment, secondComment));
 
-    var article = new ArticleEntity();
-    article.setComments(new HashSet<>(commentEntities));
-    article.setName("Article");
+    // create article
+    var article = buildArticle(comments);
 
-    // when
-    ArticleEntity articleEntity = articleRepository.save(article);
+    // save article
+    var articleEntity = articleRepository.save(article);
 
     // then
     assertNotNull(articleEntity);
 
     // and
-    ArticleEntity firstArticle = articleRepository.findAll().stream().findFirst().orElseThrow();
+    var firstArticle = articleRepository.findAll().stream().findFirst().orElseThrow();
     assertNotNull(firstArticle);
     assertEquals(firstArticle.getComments().size(), 2);
+  }
+
+  @Test
+  void createArticleThenComment() {
+
+    // create article and save
+    var article = buildArticle();
+    var articleEntity = articleRepository.save(article);
+    Long articleId = articleEntity.getId();
+    assertNotNull(articleEntity);
+
+    // create first comment
+    var firstComment = buildComment("First comment", articleId);
+
+    // create second comment
+    var secondComment = buildComment("Second comment", articleId);
+
+    // save comments
+    var commentEntities = commentRepository.saveAll(List.of(firstComment, secondComment));
+
+    ArticleEntity persistArticle = articleRepository.findArticleById(articleId);
+    assertNotNull(persistArticle);
+
+    persistArticle = articleRepository.findArticleWithCommentsByArticleId(articleId);
+    assertNotNull(persistArticle);
+
+    // todo: note no comments!
+    assertEquals(persistArticle.getComments().size(), 0);
+  }
+
+  private ArticleEntity buildArticle(List<CommentEntity> comments) {
+    var article = buildArticle();
+    article.setComments(new HashSet<>(comments));
+    return article;
+  }
+
+  private ArticleEntity buildArticle() {
+    var article = new ArticleEntity();
+    article.setName("Article");
+    return article;
+  }
+
+  private CommentEntity buildComment(String description, Long articleId) {
+    var comment = buildComment(description);
+    comment.setDate(LocalDateTime.now().plusDays(description.length()));
+    return comment;
+  }
+
+  private CommentEntity buildComment(String description) {
+    var comment = new CommentEntity();
+    comment.setDescription(description);
+    comment.setDate(LocalDateTime.now().plusDays(description.length()));
+    return comment;
   }
 }

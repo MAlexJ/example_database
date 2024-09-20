@@ -1,4 +1,8 @@
 spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
   application:
     name: one_to_many_unidirectional
 
@@ -30,13 +34,6 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
       max-lifetime: 1800000
-
-#  flyway:
-#    locations: classpath:db/migration
-#    url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:example_database_db}
-#    user: ${APP_SERVICE_MYSQL_USERNAME}
-#    password: ${APP_SERVICE_MYSQL_PASSWORD}
-#    validate-on-migrate: true
 
 server:
   port: ${PORT:8080}
