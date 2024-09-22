@@ -79,7 +79,6 @@ class OneToOneBidirectionalApplicationTests {
      * Hibernate:
      * select s1_0.stock_id,s1_0.stock_quantity,s1_0.stock_status
      *    from stock s1_0
-     *
      * Hibernate:
      * select p1_0.product_id,p1_0.product_name,p1_0.product_price,
      *            s1_0.stock_id,s1_0.stock_quantity,s1_0.stock_status
