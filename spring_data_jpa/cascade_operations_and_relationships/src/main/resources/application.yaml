@@ -1,10 +1,6 @@
 spring:
-  data:
-    jpa:
-      repositories:
-        enabled: true
   application:
-    name: one_to_many_unidirectional
+    name: cascade_operations_and_relationships
 
   threads:
     virtual:
@@ -29,8 +25,3 @@ spring:
     url: jdbc:mysql://localhost:3306/example_database_db
     username: ${APP_SERVICE_MYSQL_USERNAME}
     password: ${APP_SERVICE_MYSQL_PASSWORD}
-    hikari:
-      connection-timeout: 30000
-      maximum-pool-size: 5
-      minimum-idle: 2
-      max-lifetime: 1800000

@@ -1,6 +1,31 @@
-#### Unidirectional One-to-Many
+### Direction in Entity Relationships
 
-Unidirectional One-to-Many Relationship
+Oracle Java EE Tutorial, link: https://docs.oracle.com/cd/E19798-01/821-1841/6nmq2cpav/index.html
+
+The direction of a relationship can be either bidirectional or unidirectional.
+
+* A bidirectional relationship has both an owning side and an inverse side.
+* A unidirectional relationship has only an owning side.
+
+The owning side of a relationship determines how the Persistence runtime makes updates to the relationship in the
+database.
+
+###### Unidirectional Relationships
+
+In a unidirectional relationship, only one entity has a relationship field or property that refers to the other.
+For example, LineItem would have a relationship field that identifies Product,
+but Product would not have a relationship field or property for LineItem.
+In other words, LineItem knows about Product, but Product doesn’t know which LineItem instances refer to it.
+
+###### Queries and Relationship Direction
+
+Java Persistence query language and Criteria API queries often navigate across relationships.
+The direction of a relationship determines whether a query can navigate from one entity to another.
+For example, a query can navigate from LineItem to Product but cannot navigate in the opposite direction.
+For Order and LineItem, a query could navigate in both directions because these two entities have a bidirectional
+relationship.
+
+### Unidirectional One-to-Many Relationship
 
 Essentially, in a relational data model, a unidirectional one-to-many relationship is a type of relationship
 between two tables where one table has multiple related records in another table.

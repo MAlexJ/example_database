@@ -1,10 +1,10 @@
-spring:
+ spring:
   data:
     jpa:
       repositories:
         enabled: true
   application:
-    name: one_to_many_unidirectional
+    name: one_to_many_bidirectional
 
   threads:
     virtual:

@@ -6,6 +6,9 @@ spring:
     virtual:
       enabled: true
 
+  config:
+    import: optional:file:.env[.properties]
+
   jpa:
     show-sql: true
     hibernate:
@@ -20,8 +23,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/example_database_db
-    username: root
-    password: mysql_password
+    username: ${APP_SERVICE_MYSQL_USERNAME}
+    password: ${APP_SERVICE_MYSQL_PASSWORD}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 5
