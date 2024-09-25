@@ -29,8 +29,14 @@ public class EmployeeEntity {
 
   private String name;
 
+  /*
+   * @ManyToOne is used to define the many-to-one relationship from the target entity (many side)
+   * to the owning entity (one side).
+   *
+   * It indicates that many instances of this entity can be associated with one instance
+   * of the owning entity.
+   */
   @ManyToOne
-
   /*
    * @JoinColumn - Specifies a column for joining an entity association or element collection.
    * If the JoinColumn annotation itself is defaulted, a single join column is assumed and the default values apply.

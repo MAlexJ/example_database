@@ -1,0 +1,31 @@
+spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  application:
+    name: many_to_many_unidirectional
+
+  threads:
+    virtual:
+      enabled: true
+
+  config:
+    import: optional:file:.env[.properties]
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+    open-in-view: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/example_database_db
+    username: ${APP_SERVICE_MYSQL_USERNAME}
+    password: ${APP_SERVICE_MYSQL_PASSWORD}

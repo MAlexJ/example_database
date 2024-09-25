@@ -1,4 +1,36 @@
-# SQL example
+### Spring data jpa sampleds
+
+### JPA / Hibernate
+
+Show sql statements with params
+```
+spring:
+  jpa:
+#    show-sql: true
+    hibernate:
+      ddl-auto: create
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: false
+    open-in-view: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
+    org.hibernate.orm.jdbc.bind: trace
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder=TRACE:
+        orm:
+          jdbc:
+            bind: trace  
+```
 
 ### Database
 
