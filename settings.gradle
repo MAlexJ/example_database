@@ -17,4 +17,5 @@ include 'acid',
         'spring_data_jpa:one_to_many_bidirectional',
         'spring_data_jpa:cascade_operations_and_relationships',
         'spring_data_jpa:join_column_annotation',
-        'spring_data_jpa:many_to_many_unidirectional'
+        'spring_data_jpa:many_to_many_unidirectional',
+        'spring_data_jpa:many_to_many_bidirectional'
