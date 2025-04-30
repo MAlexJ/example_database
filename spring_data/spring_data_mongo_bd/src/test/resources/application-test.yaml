@@ -9,13 +9,3 @@ spring:
   data:
     mongodb:
       database: test
-
-logging:
-  level:
-    org:
-      mongodb: off
-      springframework:
-        boot:
-          autoconfigure:
-            mongo:
-              embedded: off

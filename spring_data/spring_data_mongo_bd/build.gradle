@@ -35,8 +35,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo:${embedMongoVersion}"
-    testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:${embedMongoSp30xVersion}"
+    testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring3x:${embedMongoSp3xVersion}"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

@@ -1,8 +1,9 @@
-### Spring data jpa sampleds
+### Spring data jpa samples
 
 ### JPA / Hibernate
 
 Show sql statements with params
+
 ```
 spring:
   jpa:
